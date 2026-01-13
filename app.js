@@ -230,3 +230,5 @@ app.put('/gorengan/settings/status', async (req, res) => {
 app.listen(process.env.PORT, () => {
   console.log(`app connected at http://localhost:3000`);
 })
+
+module.exports = app;
