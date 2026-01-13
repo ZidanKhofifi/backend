@@ -15,11 +15,18 @@ require('dotenv').config()
 
 const app = express()
 app.use(express.json())
+
+// Konfigurasi CORS
 app.use(cors({
-  origin: '*', 
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Pastikan DELETE ada di sini
-  allowedHeaders: ['Content-Type']
+  origin: [
+    'http://localhost:5173', 
+    'https://nama-proyek-frontend-anda.vercel.app' // Tambahkan URL Vercel frontend nanti di sini
+  ],
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
 }));
+
 app.use('/uploads', express.static('public/uploads'));
 
 const storage = multer.diskStorage({
